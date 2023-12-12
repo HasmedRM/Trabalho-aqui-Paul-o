@@ -23,9 +23,10 @@ int main(int argc, char *argv[]) {
     char nomeSaida[256];
     snprintf(nomeSaida, sizeof(nomeSaida), "%s/SCM-Qtz_%d_%d_%s", "./img_out", niveis, quantizacao, ".txt");
     geraCSV(quantizacao, nomeSaida);
-
+    printf("%d",d);
     if (d) {
         while ((dir = readdir(d)) != NULL) {
+            
             // Ignorar diretórios "." e ".."
             if (strcmp(dir->d_name, ".") == 0 || strcmp(dir->d_name, "..") == 0) {
                 continue;
@@ -57,9 +58,11 @@ int main(int argc, char *argv[]) {
             for (int i = 0; i < niveis; i++) {
                 scm[i] = (int *)malloc(niveis * sizeof(int));
             }
-
+            
             criaCoocorrencias(&img, &imgF, scm, niveis);
+            
             writeSCMImage(scm, nomeSaida, niveis);
+            
 
             // Libera a memória alocada para a imagem
             free(img.pData);
