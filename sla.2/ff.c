@@ -100,6 +100,7 @@ void writeSCMImage(int **scm, char *filename, int niveis) {
 
     for (int i = 0; i < niveis; i++) {
         for (int j = 0; j < niveis; j++) {
+            printf("%d",scm[i][j]);
             fprintf(fp, "%d ", scm[i][j]);
         }
         fprintf(fp, "\n");

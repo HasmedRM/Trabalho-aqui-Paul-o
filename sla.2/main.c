@@ -57,20 +57,29 @@ int main(int argc, char *argv[]) {
             int **scm = (int **)malloc(niveis * sizeof(int *));
             for (int i = 0; i < niveis; i++) {
                 scm[i] = (int *)malloc(niveis * sizeof(int));
+                printf("%d",scm[i]);
             }
             
             criaCoocorrencias(&img, &imgF, scm, niveis);
             
-            writeSCMImage(scm, nomeSaida, niveis);
+            int **scm_copy = (int **)malloc(niveis * sizeof(int *));
+            for (int i = 0; i < niveis; i++) {
+                scm_copy[i] = (int *)malloc(niveis * sizeof(int));
+                
+            }
+            
+            writeSCMImage(scm_copy, nomeSaida, niveis);
             
 
             // Libera a memória alocada para a imagem
-            free(img.pData);
-            free(imgF.pData);
-            for (int i = 0; i < niveis; i++) {
-                free(scm[i]);
-            }
-            free(scm);
+            //free(img.pData);
+            //free(imgF.pData);
+            //for (int i = 0; i < niveis; i++) {
+            //    free(scm[i]);
+            //    free(scm_copy[i]);
+           // }
+            //free(scm);
+            //free(scm_copy);
         }
         closedir(d);
     } else {
